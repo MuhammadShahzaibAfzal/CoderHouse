@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useState } from "react";
+import Card from "../../../components/shared/Card/Card";
+import Button from "../../../components/shared/Button/Button";
+import styles from "./StepOtp.module.css";
+import TextInput from "../../../components/shared/TextInput/TextInput";
 
-const StepOtp = ({onClick}) => {
+const StepOtp = ({ onClick }) => {
+  const [otp, setOtp] = useState("");
   return (
-    <div>
-        <h1>Step OTP</h1>
+    <div className={styles.cardWrapper}>
+      <Card title="Enter the code we just texted you" icon="lock-emoji">
+        <TextInput value={otp} onChange={(e) => setOtp(e.target.value)} />
+        <br />
+        <Button text="Next" onClick={onClick} />
+        <p className={styles.bottomParagraph}>
+          By entering your number, you’re agreeing to our Terms of Service and
+          Privacy Policy. Thanks!
+        </p>
+      </Card>
     </div>
-  )
-}
+  );
+};
 
-export default StepOtp
+export default StepOtp;
